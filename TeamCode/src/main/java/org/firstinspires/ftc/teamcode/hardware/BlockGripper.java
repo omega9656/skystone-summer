@@ -19,11 +19,9 @@ public class BlockGripper {
         }
     }
 
-    public double initPos = Position.READY.gripperPos;
-
     public BlockGripper(DeviceManager deviceManager){
         blockGripper = deviceManager.blockGripper;
-        blockGripper.setPosition(initPos);
+        blockGripper.setPosition(Position.READY.gripperPos);
 
         // not going to be using
         blockRotator = deviceManager.blockRotator;
