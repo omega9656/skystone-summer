@@ -6,6 +6,9 @@ public class BlockGripper {
     public Servo blockGripper;
     public Servo blockRotator;
 
+    public Position pos;
+    //updates position every time
+
     // TODO tune constants
     public enum Position {
         READY(0),
@@ -25,6 +28,8 @@ public class BlockGripper {
 
         // not going to be using
         blockRotator = deviceManager.blockRotator;
+
+        pos = Position.READY; // init pos
     }
 
     public void runGripper(Position position){
@@ -33,13 +38,16 @@ public class BlockGripper {
 
     public void ready(){
         runGripper(Position.READY);
+        pos = Position.READY;
     }
 
     public void grab(){
         runGripper(Position.GRAB);
+        pos = Position.GRAB;
     }
 
     public void release(){
         runGripper(Position.RELEASE);
+        pos = Position.RELEASE;
     }
 }
