@@ -13,29 +13,20 @@ public class Arm {
     // constants stored as encoder ticks,
     // higher value is counter-clockwise
 
-    /*
+   /*
     * INIT:      -63  deg
     * DOWN:      -25  deg
     * UP:        -354 deg
     * DEPOSIT:   -429 deg
     * TRAVELING: -53  deg
     * INTAKING:  -88  deg
-    *
-    * */
+    */
 
     public static final int ARM_INIT = -250;
 
     public boolean usingTeleop = false;
 
     public enum Position {
-
-
-/*        UP(-1400), // block is lifted up, almost at deposit position
-        DOWN(-100),
-        TRAVELING(-210),
-        DEPOSIT(-1700), // arm flipped around completely
-        INTAKING(-350); // arm is slightly above down position*/
-
         UP(degreesToTicks(-354)), // block is lifted up, almost at deposit position
         DOWN(degreesToTicks(-25)),
         TRAVELING(degreesToTicks(-53)),
