@@ -22,11 +22,10 @@ public class Arm {
     * INTAKING:  -88  deg
     */
 
-    public static final int ARM_INIT = -250;
-
     public boolean usingTeleop = false;
 
     public enum Position {
+        INIT(degreesToTicks(-63)),
         UP(degreesToTicks(-354)), // block is lifted up, almost at deposit position
         DOWN(degreesToTicks(-25)),
         TRAVELING(degreesToTicks(-53)),
@@ -54,7 +53,7 @@ public class Arm {
 
         // reset the encoder to zero
         arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setTargetPosition(ARM_INIT);
+        arm.setTargetPosition(Position.INIT.ticks);
         arm.setPower(DEFAULT_POWER);
     }
 
