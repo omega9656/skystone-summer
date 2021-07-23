@@ -12,8 +12,8 @@ public class BlockGripper {
     // TODO tune constants
     public enum Position {
         READY(0),
-        GRAB(70),
-        RELEASE(-20);
+        GRAB(.3),
+        RELEASE(.5);
 
         public double gripperPos;
 
@@ -29,7 +29,7 @@ public class BlockGripper {
         // not going to be using
         blockRotator = deviceManager.blockRotator;
 
-        pos = Position.READY; // init pos
+        ready(); // init pos
     }
 
     public void runGripper(Position position){
