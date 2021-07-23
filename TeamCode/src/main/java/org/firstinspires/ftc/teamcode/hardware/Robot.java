@@ -26,4 +26,5 @@ public class Robot {
         }
         intake = new Intake(deviceManager);
     }
+
 }
