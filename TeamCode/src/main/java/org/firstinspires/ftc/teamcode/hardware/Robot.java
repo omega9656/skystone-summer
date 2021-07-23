@@ -6,10 +6,13 @@ public class Robot {
     public DeviceManager deviceManager;
 
     public Arm arm;
-    public BackAutoGripper backAutoGripper;
     public BlockGripper blockGripper;
     public Drivetrain drivetrain;
     public Intake intake;
+
+    // auto only
+    public FrontAutoGripper frontAutoGripper;
+    public BackAutoGripper backAutoGripper;
 
     public Robot(HardwareMap hardwareMap) {
         deviceManager = new DeviceManager(hardwareMap);
@@ -17,15 +20,17 @@ public class Robot {
 
     public void init(boolean autoIsRunning){
         deviceManager.init(autoIsRunning);
-        arm = new Arm(deviceManager, !autoIsRunning);
-        backAutoGripper = new BackAutoGripper(deviceManager);
-        blockGripper = new BlockGripper(deviceManager);
+
         // drivetrain is only used for TeleOp
         if (!autoIsRunning) {
             drivetrain = new Drivetrain(deviceManager);
         }
 
+        arm = new Arm(deviceManager, !autoIsRunning);
+        blockGripper = new BlockGripper(deviceManager);
         intake = new Intake(deviceManager);
+
+        frontAutoGripper = new FrontAutoGripper(deviceManager);
         backAutoGripper = new BackAutoGripper(deviceManager);
     }
 
