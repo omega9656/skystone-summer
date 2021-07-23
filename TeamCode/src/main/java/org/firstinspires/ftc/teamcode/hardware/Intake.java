@@ -38,7 +38,7 @@ public class Intake {
 
     public void run(MotorPower motorPower){
         omniIntake.setPower(motorPower.omniPower);
-        omniIntake.setPower(motorPower.compliantPower);
+        compliantIntake.setPower(motorPower.compliantPower);
         currentPower = motorPower;
     }
 
