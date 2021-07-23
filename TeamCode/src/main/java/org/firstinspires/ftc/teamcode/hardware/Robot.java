@@ -24,7 +24,9 @@ public class Robot {
         if (!autoIsRunning) {
             drivetrain = new Drivetrain(deviceManager);
         }
+
         intake = new Intake(deviceManager);
+        backAutoGripper = new BackAutoGripper(deviceManager);
     }
 
 }
