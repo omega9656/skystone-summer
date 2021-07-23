@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.hardware.Robot;
 
 public class SquaredDrive extends OpMode {
@@ -23,6 +25,23 @@ public class SquaredDrive extends OpMode {
 
   @Override
   public void loop() {
+    telemetry.addLine("Gamepad1")
+            .addData("Left Stick X", gamepad1.left_stick_x)
+            .addData("Left Stick Y", gamepad1.left_stick_y)
+            .addData("Right Stick X", gamepad1.right_stick_x)
+            .addData("Right Stick Y", gamepad1.right_stick_y);
+
+    telemetry.addLine("Gamepad2")
+            .addData("Left Stick X", gamepad2.left_stick_x)
+            .addData("Left Stick Y", gamepad2.left_stick_y)
+            .addData("Right Stick X", gamepad2.right_stick_x)
+            .addData("Right Stick Y", gamepad2.right_stick_y);
+
+    telemetry.addLine("Arm")
+            .addData("Ticks", robot.arm.currentLocation.ticks)
+            .addData("Location", robot.arm.currentLocation.toString())
+            .addData("Power", robot.arm.currentPower);
+
     drive(DriveMode.SQUARED, DEFAULT_STRAFE);
     intake(false);
   }
