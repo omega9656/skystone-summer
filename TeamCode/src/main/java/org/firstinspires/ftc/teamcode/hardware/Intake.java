@@ -11,12 +11,12 @@ public class Intake {
     public Intake(DeviceManager deviceManager) {
         compliantIntake = deviceManager.compliantIntake;
 
-        compliantIntake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER); // when ran, ran without encoder?
-        compliantIntake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE); // when power is 0, BRAKE
+        compliantIntake.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER); // when ran, ran without encoder?
+        compliantIntake.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE); // when power is 0, BRAKE
 
         omniIntake = deviceManager.omniIntake;
-        omniIntake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        omniIntake.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE); // for the omniintake, BRAKE when power = 0
+        omniIntake.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        omniIntake.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE); // for the omniintake, BRAKE when power = 0
 
         currentPower = MotorPower.STOP; // default power is at STOP(0)
     }
