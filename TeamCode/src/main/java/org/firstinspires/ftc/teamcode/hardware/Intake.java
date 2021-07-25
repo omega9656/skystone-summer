@@ -23,8 +23,8 @@ public class Intake {
 
     public enum MotorPower {
         // set the power for the intake at different states
-        IN(-1.0, 1.0),
-        OUT(0.5, -0.5),
+        IN(1.0, -1.0),
+        OUT(-0.5, 0.5),
         STOP(0, 0);
 
         public double omniPower;
