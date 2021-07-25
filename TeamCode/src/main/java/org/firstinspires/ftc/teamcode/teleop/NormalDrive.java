@@ -9,5 +9,10 @@ public class NormalDrive extends OmegaTeleOp {
         drive(DriveMode.NORMAL, DEFAULT_STRAFE);
 
         intake(false);
+        moveBackAutoGripper();
+        moveArm();
+        moveBlockGripper();
+
+        showTelemetry();
     }
 }

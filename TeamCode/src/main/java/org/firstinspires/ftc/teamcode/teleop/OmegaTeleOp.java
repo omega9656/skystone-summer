@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.hardware.Arm;
 import org.firstinspires.ftc.teamcode.hardware.Robot;
 
 
@@ -129,4 +130,75 @@ public abstract class OmegaTeleOp extends OpMode {
             robot.intake.stop();
         }
     }
+
+    // temporary method
+    public void moveBackAutoGripper(){
+        if (gamepad1.a){
+            robot.backAutoGripper.up();
+        }
+
+        if (gamepad1.b){
+            robot.backAutoGripper.grab();
+        }
+    }
+
+    public void moveArm(){
+        if (gamepad2.dpad_up) {
+            robot.arm.up();
+        }
+
+        if (gamepad2.dpad_down) {
+            robot.arm.deposit();
+        }
+
+        if (gamepad2.dpad_left){
+            robot.arm.traveling();
+        }
+
+        if (gamepad2.dpad_right){
+            robot.arm.intaking();
+        }
+    }
+
+    public void moveBlockGripper(){
+        if (gamepad2.a){
+            robot.blockGripper.ready();
+        }
+
+        if (gamepad2.b){
+            robot.blockGripper.release();
+        }
+
+        if (gamepad2.x){
+            robot.blockGripper.grab();
+        }
+    }
+
+    public void showTelemetry(){
+        telemetry.addLine("Arm")
+                .addData("Ticks", robot.arm.arm.getCurrentPosition())
+                .addData("Location", robot.arm.currentLocation.ticks)
+                .addData("Power", robot.arm.arm.getPower());
+
+        telemetry.addLine("Intake")
+                .addData("Compliant Power", robot.intake.compliantIntake.getPower())
+                .addData("Omni Power", robot.intake.omniIntake.getPower());
+
+        telemetry.addLine("Block Gripper")
+                .addData("Block Gripper Pos", robot.blockGripper.blockGripper.getPosition())
+                .addData("block_gripper port", robot.blockGripper.blockGripper.getPortNumber());
+
+        telemetry.addLine("Back Auto Gripper")
+                .addData("Elbow Port", robot.backAutoGripper.backElbow.getPortNumber())
+                .addData("Joint Port", robot.backAutoGripper.backJoint.getPortNumber())
+                .addData("Elbow Pos", robot.backAutoGripper.backElbow.getPosition())
+                .addData("Joint Pos", robot.backAutoGripper.backJoint.getPosition());
+
+        telemetry.addLine("Drivetrain")
+                .addData("front_left port", robot.drivetrain.frontLeft.getPortNumber())
+                .addData("front_right port", robot.drivetrain.frontRight.getPortNumber())
+                .addData("back_left port", robot.drivetrain.backLeft.getPortNumber())
+                .addData("back_right port", robot.drivetrain.backRight.getPortNumber());
+    }
+
 }

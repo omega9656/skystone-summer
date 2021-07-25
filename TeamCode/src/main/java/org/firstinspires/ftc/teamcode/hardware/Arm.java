@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.hardware;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 public class Arm {
@@ -52,9 +51,11 @@ public class Arm {
         arm = deviceManager.arm;
 
         // reset the encoder to zero
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setTargetPosition(Position.INIT.ticks);
+        arm.setMode(DcMotorEx.RunMode.STOP_AND_RESET_ENCODER);
         arm.setPower(DEFAULT_POWER);
+
+        //init position
+        init();
     }
 
     public Arm(DeviceManager deviceManager, boolean usingTeleop) {
@@ -63,12 +64,12 @@ public class Arm {
     }
 
     // this method is called every frame
-    void process() {
+/*    void process() {
         // ignore direction motor may have previously been set to
-        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
         arm.setTargetPosition(currentLocation.ticks);
         arm.setPower(currentPower);
-    }
+    }*/
 
     public void setTicks(int ticks) {
         currentLocation.ticks = ticks;
@@ -79,11 +80,44 @@ public class Arm {
     }
 
     public void setPosition(Position targetPosition) {
-        if (usingTeleop && targetPosition == Position.UP) {
-            currentLocation = Position.DEPOSIT;
+
+        // checks if arm is already at UP and if button for UP is pressed again
+        // then sets position to DEPOSIT
+
+        /*if (usingTeleop && currentLocation == Position.UP && targetPosition == Position.UP) {
+
+            deposit();
+
         } else {
-            currentLocation = targetPosition;
-        }
+        }*/
+
+        arm.setTargetPosition(targetPosition.ticks);
+        arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        currentLocation = targetPosition;
+    }
+
+    public void init(){
+        setPosition(Position.INIT);
+    }
+
+    public void up(){
+        setPosition(Position.UP);
+    }
+
+    public void down(){
+        setPosition(Position.DOWN);
+    }
+
+    public void traveling(){
+        setPosition(Position.TRAVELING);
+    }
+
+    public void intaking(){
+        setPosition(Position.INTAKING);
+    }
+
+    public void deposit(){
+        setPosition(Position.DEPOSIT);
     }
 
     // TODO: add fineAdjustUp and fineAdjustDown methods for TeleOp

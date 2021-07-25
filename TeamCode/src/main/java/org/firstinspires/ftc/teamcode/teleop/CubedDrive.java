@@ -9,5 +9,10 @@ public class CubedDrive extends OmegaTeleOp {
         drive(DriveMode.CUBED, DEFAULT_STRAFE);
 
         intake(false);
+        moveBackAutoGripper();
+        moveArm();
+        moveBlockGripper();
+
+        showTelemetry();
     }
 }

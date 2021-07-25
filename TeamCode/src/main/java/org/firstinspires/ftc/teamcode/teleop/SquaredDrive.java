@@ -9,5 +9,11 @@ public class SquaredDrive extends OmegaTeleOp {
         drive(DriveMode.SQUARED, DEFAULT_STRAFE);
 
         intake(false);
+        moveBackAutoGripper();
+        moveArm();
+        moveBlockGripper();
+
+        showTelemetry();
+
     }
 }
