@@ -24,12 +24,19 @@ public class Arm {
     public boolean usingTeleop = false;
 
     public enum Position {
-        INIT(degreesToTicks(-63)),
-        UP(degreesToTicks(-354)), // block is lifted up, almost at deposit position
-        DOWN(degreesToTicks(-25)),
-        TRAVELING(degreesToTicks(-53)),
-        DEPOSIT(degreesToTicks(-429)), // arm flipped around completely
-        INTAKING(degreesToTicks(-88)); // arm is slightly above down position
+//        INIT(degreesToTicks(-63)),
+//        UP(degreesToTicks(-354)), // block is lifted up, almost at deposit position
+//        DOWN(degreesToTicks(-25)),
+//        TRAVELING(degreesToTicks(-53)),
+//        DEPOSIT(degreesToTicks(-429)), // arm flipped around completely
+//        INTAKING(degreesToTicks(-88)); // arm is slightly above down position
+
+        INIT(degreesToTicks(-30)),
+        UP(degreesToTicks(-175)), // block is lifted up, almost at deposit position
+//        DOWN(degreesToTicks(-10)),
+        TRAVELING(degreesToTicks(-25)),
+        DEPOSIT(degreesToTicks(-215)), // arm flipped around completely
+        INTAKING(degreesToTicks(-50)); // arm is slightly above down position
 
         public int ticks;
 
@@ -44,7 +51,7 @@ public class Arm {
     public double currentPower = DEFAULT_POWER;
 
     public static int degreesToTicks(int degrees) {
-        return (int) ((TICKS_PER_REVOLUTION / 360) * degrees);
+        return 2 * ((int) ((TICKS_PER_REVOLUTION / 360) * degrees));
     }
 
     public Arm(DeviceManager deviceManager) {
@@ -104,9 +111,9 @@ public class Arm {
         setPosition(Position.UP);
     }
 
-    public void down(){
-        setPosition(Position.DOWN);
-    }
+//    public void down(){
+//        setPosition(Position.DOWN);
+//    }
 
     public void traveling(){
         setPosition(Position.TRAVELING);
