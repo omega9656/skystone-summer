@@ -158,7 +158,13 @@ public abstract class OmegaTeleOp extends OpMode {
 
     public void moveArm(){
         if (gamepad2.dpad_up) {
-            robot.arm.up();
+            // if the arm is at UP and the up button is pressed again,
+            // the arm goes into deposit mode
+            if (robot.arm.currentLocation == Arm.Position.UP) {
+                robot.arm.deposit();
+            } else {
+                robot.arm.up();
+            }
         }
 
         if (gamepad2.dpad_down) {
