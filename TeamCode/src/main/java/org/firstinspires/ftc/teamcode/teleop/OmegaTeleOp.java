@@ -21,6 +21,8 @@ public abstract class OmegaTeleOp extends OpMode {
 
     public static final double DEFAULT_STRAFE = 2;
 
+    abstract public DriveMode getCurrentMode();
+
     @Override
     public void init() {
         robot = new Robot(hardwareMap);
@@ -29,9 +31,18 @@ public abstract class OmegaTeleOp extends OpMode {
     }
 
     @Override
-    abstract public void loop();
+    public void loop() {
+        drive(DEFAULT_STRAFE);
 
-    public void drive(DriveMode driveMode, double strafe) {
+        intake(false);
+        moveBackAutoGripper();
+        moveArm();
+        moveBlockGripper();
+
+        showTelemetry();
+    }
+
+    public void drive(double strafe) {
         // https://gm0.copperforge.cc/en/stable/docs/software/mecanum-drive.html
         // https://www.chiefdelphi.com/t/paper-mecanum-and-omni-kinematic-and-force-analysis/106153/5 (3rd paper)
 
@@ -77,13 +88,13 @@ public abstract class OmegaTeleOp extends OpMode {
         }
 
         // square or cube gamepad inputs
-        if (driveMode == DriveMode.SQUARED) {
+        if (getCurrentMode() == DriveMode.SQUARED) {
             // need to keep the sign, so multiply by absolute value of itself
             frontLeftPower *= Math.abs(frontLeftPower);
             backLeftPower *= Math.abs(backLeftPower);
             frontRightPower *= Math.abs(frontRightPower);
             backRightPower *= Math.abs(backRightPower);
-        } else if (driveMode == DriveMode.CUBED) {
+        } else if (getCurrentMode() == DriveMode.CUBED) {
             frontLeftPower = Math.pow(frontLeftPower, 3);
             backLeftPower = Math.pow(backLeftPower, 3);
             frontRightPower = Math.pow(frontRightPower, 3);
