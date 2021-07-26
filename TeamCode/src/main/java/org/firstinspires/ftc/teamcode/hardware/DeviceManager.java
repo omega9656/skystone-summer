@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.hardware;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -29,7 +30,8 @@ public class DeviceManager {
     // Drive Motors
     public DcMotorEx frontRight, frontLeft, backRight, backLeft;
 
-
+    //Sensors
+    public DistanceSensor sensorDistance;
 
     // Device Initialization
     void init(boolean autoIsRunning) {
