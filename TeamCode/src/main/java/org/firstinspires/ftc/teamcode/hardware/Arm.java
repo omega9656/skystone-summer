@@ -50,22 +50,6 @@ public class Arm {
         this.usingTeleop = usingTeleop;
     }
 
-    // this method is called every frame
-/*    void process() {
-        // ignore direction motor may have previously been set to
-        arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-        arm.setTargetPosition(currentLocation.ticks);
-        arm.setPower(currentPower);
-    }*/
-
-    public void setTicks(int ticks) {
-        currentLocation.ticks = ticks;
-    }
-
-    public int getTicks() {
-        return currentLocation.ticks;
-    }
-
     public void setPosition(Position targetPosition) {
         arm.setTargetPosition(targetPosition.ticks);
         arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);

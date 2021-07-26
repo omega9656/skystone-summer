@@ -12,6 +12,7 @@ public abstract class OmegaTeleOp extends OpMode {
     Robot robot;
     ElapsedTime time = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
     boolean stalled = false;
+    boolean pickedUp = false;
 
     // Different drive modes
     enum DriveMode {
@@ -35,12 +36,45 @@ public abstract class OmegaTeleOp extends OpMode {
     public void loop() {
         drive(DEFAULT_STRAFE);
 
-        intake(false);
+        intake(true);
         moveBackAutoGripper();
-        moveArm();
         moveBlockGripper();
+        sensorPickup();
 
         showTelemetry();
+    }
+
+    public void sensorPickup() {
+        final int RUN_MILLISECONDS = 150;
+
+        if (robot.blockDetector.isBlockIntaked() && !pickedUp) {
+            pickedUp = true;
+
+            robot.blockGripper.release();
+            // Create a timer for running certain tasks for a certain amount of time
+            ElapsedTime timer = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
+
+            timer.startTime();
+            while (timer.milliseconds() < RUN_MILLISECONDS) {
+                drive(DEFAULT_STRAFE);
+            }
+
+            robot.arm.intaking();
+            timer.reset();
+            timer.startTime();
+            while (timer.milliseconds() < RUN_MILLISECONDS) {
+                drive(DEFAULT_STRAFE);
+            }
+
+            robot.blockGripper.grab();
+            timer.reset();
+            timer.startTime();
+            while (timer.milliseconds() < RUN_MILLISECONDS) {
+                drive(DEFAULT_STRAFE);
+            }
+
+            robot.arm.traveling();
+        }
     }
 
     public void drive(double strafe) {

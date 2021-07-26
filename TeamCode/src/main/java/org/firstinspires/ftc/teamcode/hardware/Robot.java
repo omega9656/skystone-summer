@@ -9,6 +9,7 @@ public class Robot {
     public BlockGripper blockGripper;
     public Drivetrain drivetrain;
     public Intake intake;
+    public BlockDetector blockDetector;
 
     // auto only
     public FrontAutoGripper frontAutoGripper;
