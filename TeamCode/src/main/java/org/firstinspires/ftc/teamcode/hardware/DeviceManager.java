@@ -42,21 +42,20 @@ public class DeviceManager {
             frontLeft = hardwareMap.get(DcMotorEx.class, "front_left");
             backRight = hardwareMap.get(DcMotorEx.class, "back_right");
             backLeft = hardwareMap.get(DcMotorEx.class, "back_left");
-
-            omniIntake = hardwareMap.get(DcMotorEx.class, "omni_intake");
-            compliantIntake = hardwareMap.get(DcMotorEx.class, "compliant_intake");
-
-            frontJoint = hardwareMap.get(Servo.class, "front_joint");
-            frontElbow = hardwareMap.get(Servo.class, "front_elbow");
-
-            backJoint = hardwareMap.get(Servo.class, "back_joint");
-            backElbow = hardwareMap.get(Servo.class, "back_elbow");
-
-            arm = hardwareMap.get(DcMotorEx.class, "arm");
-
-            blockRotator = hardwareMap.get(Servo.class, "block_rotator");
-            blockGripper = hardwareMap.get(Servo.class, "block_gripper");
         }
+        omniIntake = hardwareMap.get(DcMotorEx.class, "omni_intake");
+        compliantIntake = hardwareMap.get(DcMotorEx.class, "compliant_intake");
+
+        frontJoint = hardwareMap.get(Servo.class, "front_joint");
+        frontElbow = hardwareMap.get(Servo.class, "front_elbow");
+
+        backJoint = hardwareMap.get(Servo.class, "back_joint");
+        backElbow = hardwareMap.get(Servo.class, "back_elbow");
+
+        arm = hardwareMap.get(DcMotorEx.class, "arm");
+
+        blockRotator = hardwareMap.get(Servo.class, "block_rotator");
+        blockGripper = hardwareMap.get(Servo.class, "block_gripper");
     }
 
     // Used by TeleOp
