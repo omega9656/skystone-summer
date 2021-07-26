@@ -36,7 +36,7 @@ public class Arm {
 //        DOWN(degreesToTicks(-10)),
         TRAVELING(degreesToTicks(-25)),
         DEPOSIT(degreesToTicks(-215)), // arm flipped around completely
-        INTAKING(degreesToTicks(-50)); // arm is slightly above down position
+        INTAKING(degreesToTicks(-40)); // arm is slightly above down position
 
         public int ticks;
 
