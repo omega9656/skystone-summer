@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.teleop;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 import org.firstinspires.ftc.teamcode.hardware.Arm;
 import org.firstinspires.ftc.teamcode.hardware.Robot;
 
@@ -121,9 +122,11 @@ public abstract class OmegaTeleOp extends OpMode {
             robot.intake.in();
 
             // TODO: fix stall automation
-            /*if (stallAutomation) {
+            if (stallAutomation) {
                 // if the intake motor is stalling, run intake outward
-                if (robot.deviceManager.compliantIntake.getCurrent(CurrentUnit.AMPS) >= STALL_CURRENT && !stalled) {
+                if ((robot.deviceManager.compliantIntake.getCurrent(CurrentUnit.AMPS) >= STALL_CURRENT
+                        || robot.deviceManager.omniIntake.getCurrent(CurrentUnit.AMPS) >= STALL_CURRENT)
+                        && !stalled) {
                     stalled = true;
                     robot.intake.out();
                     time.reset();
@@ -134,7 +137,7 @@ public abstract class OmegaTeleOp extends OpMode {
                     robot.intake.stop();
                     stalled = false;
                 }
-            }*/
+            }
         } else if (gamepad2.right_bumper) {
             robot.intake.out();
         } else {
