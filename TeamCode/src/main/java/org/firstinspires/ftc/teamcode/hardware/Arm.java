@@ -9,31 +9,11 @@ public class Arm {
     // https://www.gobilda.com/5202-series-yellow-jacket-planetary-gear-motor-50-9-1-ratio-117-rpm-3-3-5v-encoder
     public static final double TICKS_PER_REVOLUTION = 1425.1;
 
-    // constants stored as encoder ticks,
-    // higher value is counter-clockwise
-
-   /*
-    * INIT:      -63  deg
-    * DOWN:      -25  deg
-    * UP:        -354 deg
-    * DEPOSIT:   -429 deg
-    * TRAVELING: -53  deg
-    * INTAKING:  -88  deg
-    */
-
     public boolean usingTeleop = false;
 
     public enum Position {
-//        INIT(degreesToTicks(-63)),
-//        UP(degreesToTicks(-354)), // block is lifted up, almost at deposit position
-//        DOWN(degreesToTicks(-25)),
-//        TRAVELING(degreesToTicks(-53)),
-//        DEPOSIT(degreesToTicks(-429)), // arm flipped around completely
-//        INTAKING(degreesToTicks(-88)); // arm is slightly above down position
-
         INIT(degreesToTicks(-30)),
         UP(degreesToTicks(-175)), // block is lifted up, almost at deposit position
-//        DOWN(degreesToTicks(-10)),
         TRAVELING(degreesToTicks(-25)),
         DEPOSIT(degreesToTicks(-215)), // arm flipped around completely
         INTAKING(degreesToTicks(-40)); // arm is slightly above down position
@@ -87,17 +67,6 @@ public class Arm {
     }
 
     public void setPosition(Position targetPosition) {
-
-        // checks if arm is already at UP and if button for UP is pressed again
-        // then sets position to DEPOSIT
-
-        /*if (usingTeleop && currentLocation == Position.UP && targetPosition == Position.UP) {
-
-            deposit();
-
-        } else {
-        }*/
-
         arm.setTargetPosition(targetPosition.ticks);
         arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
         currentLocation = targetPosition;
@@ -110,10 +79,6 @@ public class Arm {
     public void up(){
         setPosition(Position.UP);
     }
-
-//    public void down(){
-//        setPosition(Position.DOWN);
-//    }
 
     public void traveling(){
         setPosition(Position.TRAVELING);
