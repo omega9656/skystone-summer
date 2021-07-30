@@ -11,8 +11,6 @@ public class Robot {
     public Intake intake;
     public BlockDetector blockDetector;
 
-    public BlockDetector blockDetector;
-
     // auto only
     public FrontAutoGripper frontAutoGripper;
     public BackAutoGripper backAutoGripper;
