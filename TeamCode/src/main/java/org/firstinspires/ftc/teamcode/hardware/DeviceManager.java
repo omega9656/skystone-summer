@@ -56,6 +56,8 @@ public class DeviceManager {
 
         blockRotator = hardwareMap.get(Servo.class, "block_rotator");
         blockGripper = hardwareMap.get(Servo.class, "block_gripper");
+
+        sensorDistance = hardwareMap.get(DistanceSensor.class, "sensor_distance");
     }
 
     // Used by TeleOp

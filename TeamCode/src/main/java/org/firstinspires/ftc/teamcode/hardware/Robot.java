@@ -11,6 +11,8 @@ public class Robot {
     public Intake intake;
     public BlockDetector blockDetector;
 
+    public BlockDetector blockDetector;
+
     // auto only
     public FrontAutoGripper frontAutoGripper;
     public BackAutoGripper backAutoGripper;
@@ -33,6 +35,8 @@ public class Robot {
 
         frontAutoGripper = new FrontAutoGripper(deviceManager);
         backAutoGripper = new BackAutoGripper(deviceManager);
+
+        blockDetector = new BlockDetector(deviceManager);
     }
 
 }

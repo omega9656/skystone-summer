@@ -24,12 +24,13 @@ public class BlockGripper {
 
     public BlockGripper(DeviceManager deviceManager){
         blockGripper = deviceManager.blockGripper;
-        blockGripper.setPosition(Position.READY.gripperPos);
+
+        blockGripper.setPosition(0);
+        blockGripper.setDirection(Servo.Direction.FORWARD);
 
         // not going to be using
         blockRotator = deviceManager.blockRotator;
 
-        ready(); // init pos
     }
 
     public void runGripper(Position position){

@@ -28,11 +28,17 @@ public class FrontAutoGripper {
     }
 
     public FrontAutoGripper (DeviceManager deviceManager){
+
         frontJoint = deviceManager.frontJoint;
         frontElbow = deviceManager.backElbow;
 
-        // init pos
-        ready();
+        // set default position
+        frontElbow.setPosition(0);
+        frontJoint.setPosition(0);
+
+        frontElbow.setDirection(Servo.Direction.FORWARD);
+        frontJoint.setDirection(Servo.Direction.FORWARD);
+
     }
 
     public void run(Position position){

@@ -27,7 +27,7 @@ public class Arm {
 
     public Position currentLocation = Position.TRAVELING;
 
-    public static final double DEFAULT_POWER = 0.5;
+    public static final double DEFAULT_POWER = 0.3;
     public double currentPower = DEFAULT_POWER;
 
     public static int degreesToTicks(int degrees) {

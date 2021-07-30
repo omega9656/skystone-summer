@@ -30,7 +30,11 @@ public class BackAutoGripper {
         backElbow = deviceManager.backElbow;
 
         // set default position
-        ready();
+        backElbow.setPosition(0);
+        backJoint.setPosition(0);
+
+        backJoint.setDirection(Servo.Direction.REVERSE);
+        backElbow.setDirection(Servo.Direction.REVERSE);
     }
 
     public void run(Position position){
